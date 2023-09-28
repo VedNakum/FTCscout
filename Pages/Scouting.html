@@ -1,101 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Save Web Form Data to Spreadsheets - Contact Form</title>
-    <style>
-        /* Reset some default styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* Global styles */
-        body {
-            font-family: Arial, sans-serif;
-        }
-
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header styles */
-        .main-header {
-            background-color: #222;
-            color: #fff;
-            padding: 20px 0;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        /* Navigation */
-        .main-nav {
-            list-style: none;
-        }
-
-        .main-nav li {
-            display: inline;
-            margin-right: 20px;
-        }
-
-        .main-nav a {
-            color: #fff;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .main-nav a:hover {
-            color: #ffcc00;
-        }
-
-        /* Form styles */
-        form {
-            margin-top: 20px;
-        }
-
-        label {
-            font-weight: bold;
-        }
-
-        input[type="text"] {
-            width: 100%;
-            padding: 5px;
-            margin: 5px 0;
-            border: 1px solid #ccc;
-        }
-
-        button {
-            background-color: #ffcc00;
-            color: #222;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #222;
-            color: #ffcc00;
-        }
-    </style>
+    <meta charset="utf-8">
+    <title>scouting</title>
+    <link rel="stylesheet" href="Css/scouting.css">
+    <script src="Javascript/Scouting.js"></script>
 </head>
 <body>
     <header class="main-header">
         <div class="container">
-            <h1 class="logo">Team 16883: [Your Team Name]</h1>
+            <h1 class="logo">Team 16883: dynobyte!</h1>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="Scouting.html">Projects</a></li>
-                    <li><a href="Teams.html">News</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="#sponsors">Sponsors</a></li>
+                    <li><a href="aboutus.html">About Us</a></li>
+                    <li><a href="Scouting.html">Scouting</a></li>
+                    <li><a href="Teams.html">Teams</a></li>
+                    <li><a href="Contact.html">Contact</a></li>
+                    <li><a href="Sponsors.html">Sponsors</a></li>        
                 </ul>
             </nav>
         </div>
@@ -112,25 +33,5 @@
 
         <button onclick="SubForm()">Submit</button>
     </form>
-
-    <script>
-        function SubForm() {
-            $.ajax({
-                url: 'https://api.apispreadsheets.com/data/U20YWbdyS9VZZRCv/',
-                type: 'post',
-                data: $("#myForm").serializeArray(),
-                success: function () {
-                    alert("Scouting Added");
-                },
-                error: function () {
-                    alert("Scouting Added");
-                }
-            });
-        }
-    </script>
-    <script
-        src="https://code.jquery.com/jquery-3.4.1.js"
-        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-        crossorigin="anonymous"></script>
 </body>
 </html>
