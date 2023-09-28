@@ -10,8 +10,22 @@
 <body>
     <h1>FTC Scouting Form</h1>
     <p>Fill out the information below for scouting purposes:</p>
-
-    <form action="submit_scouting.php" method="post">
+<script>
+function SubForm (){
+    $.ajax({
+        url:'https://api.apispreadsheets.com/data/410/',
+        type:'post',
+        data:$("#myForm").serializeArray(),
+        success: function(){
+          alert("Form Data Submitted :)")
+        },
+        error: function(){
+          alert("There was an error :(")
+        }
+    });
+}
+</script>
+    <form>
         <!-- Team Information -->
         <h2>Team Information</h2>
         <label for="teamNumber">Team Number:</label>
