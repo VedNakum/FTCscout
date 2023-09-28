@@ -1,15 +1,11 @@
-//content goes here
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FTC Scouting Form</title>
-    <link rel="stylesheet" href="scouting.css"> <!-- You can link a CSS file for styling if needed -->
-</head>
-<body>
-    <h1>FTC Scouting Form</h1>
-    <p>Fill out the information below for scouting purposes:</p>
+<title>Save Web Form Data to Spreadsheets - Contact Form</title>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
 <script>
 function SubForm (){
     $.ajax({
@@ -25,43 +21,18 @@ function SubForm (){
     });
 }
 </script>
-    <form id="myForm" >
-        <!-- Team Information -->
-        <h2>Team Information</h2>
-        <label for="teamNumber">Team Number:</label>
-        <input type="text" id="teamNumber" name="teamNumber" required>
-
-        <!-- Match Information -->
-        <h2>Match Information</h2>
-        <label for="matchNumber">Match Number:</label>
-        <input type="text" id="matchNumber" name="matchNumber" required>
-
-        <label for="allianceColor">Alliance Color:</label>
-        <select id="allianceColor" name="allianceColor">
-            <option value="Red">Red</option>
-            <option value="Blue">Blue</option>
-        </select>
-
-        <!-- Robot Performance -->
-        <h2>Robot Performance</h2>
-        <label for="autonomousScore">Autonomous Score:</label>
-        <input type="number" id="autonomousScore" name="autonomousScore" min="0" required>
-
-        <label for="teleopScore">Teleop Score:</label>
-        <input type="number" id="teleopScore" name="teleopScore" min="0" required>
-
-        <!-- Additional Scouting Data -->
-        <h2>Additional Scouting Data</h2>
-        <label for="comments">Comments:</label>
-        <textarea id="comments" name="comments" rows="4"></textarea>
-
-        <label for="scoutName">Scout Name:</label>
-        <input type="text" id="scoutName" name="scoutName" required>
-
-        <!-- Submit Button -->
-        <button onclick="SubForm()" type="submit">Submit</button>
-    </form>
-
-    <script src="script.js"></script> <!-- You can link a JavaScript file for additional functionality -->
+</head>
+<body>
+  <form id="myForm">
+    <label>Team Number</label>
+    <br/>
+    <input name="Timestamp" />
+    <br/>
+    <label>Team Name</label>
+    <br/>
+    <input name="Untitled Question"/>
+    <br/>
+  </form>
+  <button onclick="SubForm()">Submit</button>
 </body>
 </html>
