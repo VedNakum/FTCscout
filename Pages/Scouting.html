@@ -1,79 +1,92 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Save Web Form Data to Spreadsheets - Contact Form</title>
-   <style>
-      /* Reset some default styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Global styles */
-body {
-    font-family: Arial, sans-serif;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* Header styles */
-.main-header {
-    background-color: #222;
-    color: #fff;
-    padding: 20px 0;
-}
-
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.main-nav ul {
-    list-style: none;
-}
-
-.main-nav ul li {
-    display: inline;
-    margin-right: 20px;
-}
-
-.main-nav a {
-    color: #fff;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.main-nav a:hover {
-    color: #ffcc00;
-}
-   </style>
-   <script>
-      function SubForm (){
-    $.ajax({
-        url:'https://api.apispreadsheets.com/data/U20YWbdyS9VZZRCv/',
-        type:'post',
-        data:$("#myForm").serializeArray(),
-        success: function(){
-          alert("Form Data Submitted :)")
-        },
-        error: function(){
-          alert("There was an error :(")
+    <title>Save Web Form Data to Spreadsheets - Contact Form</title>
+    <style>
+        /* Reset some default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-    });
-}
-   </script>
-<script
-  src="https://code.jquery.com/jquery-3.4.1.js"
-  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-  crossorigin="anonymous"></script>
+
+        /* Global styles */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header styles */
+        .main-header {
+            background-color: #222;
+            color: #fff;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* Navigation */
+        .main-nav {
+            list-style: none;
+        }
+
+        .main-nav li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        .main-nav a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .main-nav a:hover {
+            color: #ffcc00;
+        }
+
+        /* Form styles */
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 5px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background-color: #ffcc00;
+            color: #222;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #222;
+            color: #ffcc00;
+        }
+    </style>
 </head>
-   <header class="main-header">
+<body>
+    <header class="main-header">
         <div class="container">
             <h1 class="logo">Team 16883: [Your Team Name]</h1>
             <nav class="main-nav">
@@ -87,20 +100,37 @@ body {
             </nav>
         </div>
     </header>
-<body>
-  <form id="myForm">
-    <label>Team Number</label>
-    <br/>
-    <input name="Team #" />
-    <br/>
-    <label>Team Name</label>
-    <br/>
-    <input name="Team name"/>
-    <br/>
-     <label>Auton Points</label>
-     <br/>
-     <input name="Auton Points"/>
-  </form>
-  <button onclick="SubForm()">Submit</button>
+    <form id="myForm">
+        <label for="teamNumber">Team Number</label>
+        <input type="text" id="teamNumber" name="Team #" />
+
+        <label for="teamName">Team Name</label>
+        <input type="text" id="teamName" name="Team name"/>
+
+        <label for="autonPoints">Auton Points</label>
+        <input type="text" id="autonPoints" name="Auton Points"/>
+
+        <button onclick="SubForm()">Submit</button>
+    </form>
+
+    <script>
+        function SubForm() {
+            $.ajax({
+                url: 'https://api.apispreadsheets.com/data/U20YWbdyS9VZZRCv/',
+                type: 'post',
+                data: $("#myForm").serializeArray(),
+                success: function () {
+                    alert("Form Data Submitted :)");
+                },
+                error: function () {
+                    alert("There was an error :(");
+                }
+            });
+        }
+    </script>
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script>
 </body>
 </html>
