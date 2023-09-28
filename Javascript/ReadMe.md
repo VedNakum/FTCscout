@@ -1,1 +1,1 @@
-javascriot for this website
+javascript for this website
