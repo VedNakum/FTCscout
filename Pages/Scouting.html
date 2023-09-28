@@ -1,26 +1,13 @@
 <!DOCTYPE html>
+<link rel="stylesheet" href="Css/scouting.css">
 <html>
 <head>
 <title>Save Web Form Data to Spreadsheets - Contact Form</title>
+   <script src="Javascript/scouting.js"></script>
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   crossorigin="anonymous"></script>
-<script>
-function SubForm (){
-    $.ajax({
-        url:'https://api.apispreadsheets.com/data/U20YWbdyS9VZZRCv/',
-        type:'post',
-        data:$("#myForm").serializeArray(),
-        success: function(){
-          alert("Form Data Submitted :)")
-        },
-        error: function(){
-          alert("There was an error :(")
-        }
-    });
-}
-</script>
 </head>
 <body>
   <form id="myForm">
