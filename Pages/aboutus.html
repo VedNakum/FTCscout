@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us in Space</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
+    <script>
+        // Set up the scene, camera, and renderer
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById('container').appendChild(renderer.domElement);
+
+        // Create a 3D sphere for the background
+        const backgroundGeometry = new THREE.SphereGeometry(100, 32, 32);
+        const backgroundMaterial = new THREE.MeshBasicMaterial({
+            map: new THREE.TextureLoader().load('space.jpg'), // Replace 'space.jpg' with your space texture
+            side: THREE.BackSide
+        });
+        const backgroundSphere = new THREE.Mesh(backgroundGeometry, backgroundMaterial);
+        scene.add(backgroundSphere);
+
+        // Create 3D planets and moons
+        const planets = [];
+        const moonTextures = ['moon1.jpg', 'moon2.jpg', 'moon3.jpg']; // Replace with your moon textures
+
+        function createPlanet(radius, distance, texture) {
+            const geometry = new THREE.SphereGeometry(radius, 32, 32);
+            const material = new THREE.MeshLambertMaterial({ map: new THREE.TextureLoader().load(texture) });
+            const planet = new THREE.Mesh(geometry, material);
+            planet.position.x = distance;
+            planets.push(planet);
+            scene.add(planet);
+
+            // Create moons for each planet
+            for (let i = 0; i < 3; i++) {
+                const moonGeometry = new THREE.SphereGeometry(radius * 0.1, 32, 32);
+                const moonMaterial = new THREE.MeshLambertMaterial({ map: new THREE.TextureLoader().load(moonTextures[i]) });
+                const moon = new THREE.Mesh(moonGeometry, moonMaterial);
+                moon.position.x = Math.random() * 2 - 1 + distance;
+                moon.position.y = Math.random() * 2 - 1;
+                moon.position.z = Math.random() * 2 - 1;
+                moon.position.normalize();
+                moon.position.multiplyScalar(radius * 5);
+                planet.add(moon);
+            }
+        }
+
+        createPlanet(5, 20, 'earth.jpg'); // Replace with your planet textures
+        createPlanet(3, 35, 'mars.jpg');
+
+        // Add lighting to the scene
+        const light = new THREE.PointLight(0xffffff, 1, 1000);
+        light.position.set(50, 50, 50);
+        scene.add(light);
+
+        // Set camera position
+        camera.position.z = 50;
+
+        // Animation function
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // Rotate planets
+            planets.forEach(planet => {
+                planet.rotation.x += 0.001;
+                planet.rotation.y += 0.001;
+            });
+
+            renderer.render(scene, camera);
+        }
+
+        // Handle window resizing
+        window.addEventListener('resize', () => {
+            const newWidth = window.innerWidth;
+            const newHeight = window.innerHeight;
+
+            camera.aspect = newWidth / newHeight;
+            camera.updateProjectionMatrix();
+
+            renderer.setSize(newWidth, newHeight);
+        });
+
+        animate();
+    </script>
+</body>
+</html>
