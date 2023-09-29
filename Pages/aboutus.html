@@ -41,7 +41,7 @@
 
         // Create 3D planets and moons
         const planets = [];
-        const moonTextures = ['moon1.jpg', 'moon2.jpg', 'moon3.jpg']; // Replace with your moon textures
+        const moonTextures = ['Images/image_2023-09-28_180741907.png', 'Images/image_2023-09-28_180741907.png', 'Images/image_2023-09-28_180741907.png']; // Replace with your moon textures
 
         function createPlanet(radius, distance, texture) {
             const geometry = new THREE.SphereGeometry(radius, 32, 32);
@@ -65,8 +65,8 @@
             }
         }
 
-        createPlanet(5, 20, 'earth.jpg'); // Replace with your planet textures
-        createPlanet(3, 35, 'mars.jpg');
+        createPlanet(5, 20, 'Images/image_2023-09-28_180741907.png'); // Replace with your planet textures
+        createPlanet(3, 35, 'Images/image_2023-09-28_180741907.png');
 
         // Add lighting to the scene
         const light = new THREE.PointLight(0xffffff, 1, 1000);
